@@ -1,42 +1,77 @@
-# credit_application_model
+# Ostrich-AI/credit_application_model
 
-Public demonstration credit-application model and inference assets.
+Sample credit-application model/workload. It is an example consumer workload, separate from platform services.
 
-## Start here
+## Source baseline
 
-| Need | Read |
-|---|---|
-| Setup and operating context | [Handover guide](docs/HANDOVER.md) |
-| Source layout and architecture | [Architecture](docs/ARCHITECTURE.md) |
-| Provisional owner and contribution evidence | [Contributions](docs/CONTRIBUTIONS.md) |
-| Prior detailed guidance | [Preserved README](docs/legacy/README.before-20261115.md) |
+| Field | Value |
+| --- | --- |
+| Reviewed branch | main |
+| Reviewed SHA | ce2bd093a017f030f97b8ba03cb73473dbcf099e |
+| GitHub default | main |
+| Source class | Wider platform / sample / tooling |
+| Validation | Source/manifests inspected; application execution not claimed |
 
-## Source and ownership
+The reviewed branch is a concrete coding baseline, not proof of the staging image. Reproduce a deployed issue using its actual image/source manifest. A different default branch may contain older code.
 
-- Default branch reviewed: `main` at `30d66553c134175e4763f11df127b2b626b2f81d`.
-- Setup/source ref used for this guide: [`30d66553c134175e4763f11df127b2b626b2f81d`](https://github.com/Ostrich-AI/credit_application_model/tree/30d66553c134175e4763f11df127b2b626b2f81d).
-- Provisional technical owner: [@sunil-shrimali](https://github.com/sunil-shrimali). This is a contribution-based coordination assignment pending confirmation; no GitHub permissions or review rules are changed.
-- Reviewed 5 selected source/document files across default and staging source where available. This is a documentation/source review, not an exhaustive security audit or a deployed-environment verification.
+## Clone the right repository
 
-## Getting started
-
-Python version from pyproject.toml or the Dockerfile; isolated virtual environment; approved synthetic configuration.
-
-```bash
-python -m venv .venv
-# Activate the virtual environment for your operating system.
-python -m pip install -r requirements.txt
+```sh
+git clone https://github.com/Ostrich-AI/credit_application_model.git
+cd credit_application_model
+git switch main
+git switch -c feature/your-change
 ```
 
+## Install, run and check
 
-## Working rules
+| Task | Observed command / requirement | Evidence |
+| --- | --- | --- |
+| Install | python -m pip install -r requirements.txt | requirements.txt; activated local virtual environment |
 
-Use synthetic data and approved test access. Keep passwords, tokens and private keys out of the repository and issue discussions. Record source ref, environment and evidence for changes. Before promoting a release, independently verify build, smoke checks, migration, rollback and recovery; this guide does not claim those checks have passed.
+Commands are derived from the selected manifests/entrypoints. Configure only isolated local or approved sandbox dependencies before running tests or migrations. A semicolon in a table separates sequential commands; run them separately in your shell.
 
-## Existing source guides
+## Dependencies
 
-- [README.md](https://github.com/Ostrich-AI/credit_application_model/blob/30d66553c134175e4763f11df127b2b626b2f81d/README.md)
+- See the package/image manifest and code map; this component may be documentation, infrastructure, UI or a sample rather than a standalone API.
 
-## Documentation maintenance
+## Where to change code
 
-Update this README and the matching docs when interfaces, dependencies, deployment or support ownership change. Preserve historical evidence and use a reviewed documentation change. Review date: 2026-11-15.
+## Configuration, tests and issues
+
+Read [CONFIGURATION.md](docs/onboarding/CONFIGURATION.md) before starting the process. Use [MAINTAINERS.md](MAINTAINERS.md) for issue and access routing. Unit/contract/integration are different boundaries; tests listed in package metadata have not been executed by this documentation task.
+
+Before a pull request: run the available checks, add a focused regression, update affected API/data/worker documentation and name any blocked dependency. No shared root credential is required to submit code. Product defects remain engineering issues rather than hidden documentation omissions.
+
+## Provenance
+
+[Selected source tree](https://github.com/Ostrich-AI/credit_application_model/tree/ce2bd093a017f030f97b8ba03cb73473dbcf099e) was inspected on 24 November 2026. Old README clone names and feature claims are not adopted without matching source evidence.
+
+## Contributor navigation
+
+- [Contribution workflow](CONTRIBUTING.md)
+- [Component architecture](docs/onboarding/ARCHITECTURE.md)
+- [Security reporting](SECURITY.md)
+- [Previous README](docs/legacy/README.before-20261124-main.md)
+
+## Concrete sample or installer entry point
+
+The checked CLI defaults to `model/model.pkl`, while the repository asset is `model.pkl`. Supply its path explicitly. Create a synthetic feature CSV matching the model schema; an input CSV is not supplied in the reviewed tree. Only load the model artifact after verifying its provenance.
+
+```sh
+python inference.py --input dataset/input.csv --model model.pkl --output output/output.csv
+```
+
+The output is a CSV containing `Class` predictions. Input/schema and dependency compatibility still need a clean execution test.
+
+- [inference.py](https://github.com/Ostrich-AI/credit_application_model/blob/ce2bd093a017f030f97b8ba03cb73473dbcf099e/inference.py)
+- [entrypoint.sh](https://github.com/Ostrich-AI/credit_application_model/blob/ce2bd093a017f030f97b8ba03cb73473dbcf099e/entrypoint.sh)
+- [parameters.json](https://github.com/Ostrich-AI/credit_application_model/blob/ce2bd093a017f030f97b8ba03cb73473dbcf099e/parameters.json)
+- [Existing docs/HANDOVER.md](docs/HANDOVER.md)
+- [Existing docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+
+## Branch and release boundary
+
+This README is installed on `main`. The reviewed implementation branch is `main`; use it for the setup commands above. Source pins identify the pre-documentation code baseline. Documentation updates do not establish the image running at any portal.
+
+This is a public sample/distribution repository. Its existing license and notices govern reuse; no new license is introduced here.
